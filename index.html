@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Modern Combat 4 - Settings</title>
+</head>
+
+
+
+<body id="app">
+
+    
+    
+    <!-- TOGGLE -->
+    <!-- <label class="ui-toggle">
+        <input type="checkbox">
+        <div class="toggle-wrapper">
+            <div class="toggle-thumb"></div>
+            <div class="toggle-state-hidden">
+                <div class="toggle-state">I</div>
+                <div class="toggle-state">O</div>
+            </div>
+        </div>
+    </label> -->
+
+
+
+
+    <!-- SEEKBAR -->
+    <!-- <div class="ui-seekbar">
+        <div class="seekbar-control">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+            </svg>
+        </div>
+        <div class="seekbar-container">
+            <div class="seekbar-fill" style="width: 0%;">
+                <div class="seekbar-thumb"></div>
+            </div>
+        </div>
+        <div class="seekbar-control">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+            </svg>
+        </div>
+    </div> -->
+
+
+
+
+
+
+
+    <!-- MODAL INFO -->
+    <div class="modal" id="modal-info">
+
+        <div class="modal-window">
+
+
+            <div class="modal-content-wrapper">
+                <div class="modal-content"></div>
+            </div>
+
+
+            <div class="modal-controls">
+                <div class="modal-button" onclick="toggleModal('modal-info' ,false)">OK</div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    
+    <div id="setting_screen">
+
+        <div class="setting-window">
+
+
+            <!-- LISTA DE OPÇÕES -->
+            <div class="options-list">
+
+                <!-- HEADER -->
+                <div class="setting-header">
+
+                    <div class="setting-header-content">
+                        <div class="setting-start-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                        </div>
+                        <div class="setting-label">OPÇÕES</div>
+                    </div>
+
+                    <div style="flex: 1; display: flex; justify-content: flex-end;">
+                        <div class="setting-line"></div>
+                    </div>
+                </div>
+
+
+                <!-- LISTA DE ITENS -->
+                <div class="setting-list-type">
+                    <div class="setting-type-wrapper">APOIO AO CLIENTE</div>
+                    <div class="setting-type-wrapper option-selected" onclick="showListItem(this, 0)">CONFIGURAÇÕES</div>
+                    <div class="setting-type-wrapper" onclick="showListItem(this, 1)">CONTROLES</div>
+                    <div class="setting-type-wrapper" onclick="showListItem(this, 2)">SOM</div>
+                    <div class="setting-type-wrapper" onclick="showListItem(this, 3)">AJUDA</div>
+                    <div class="setting-type-wrapper">IDIOMA</div>
+                    <div class="setting-type-wrapper">POLÍTICA DE PRIVACIDADE</div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <!-- LISTA DE ITENS :: MAIN -->
+            <div class="options-list">
+
+                <!-- HEADER -->
+                <div class="setting-header">
+
+                    <div class="setting-header-content">
+                        <div class="setting-start-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                        </div>
+                        <div class="setting-label" id="setting-label-text">CONFIGURAÇÕES</div>
+                    </div>
+
+                    <div style="flex: 1; display: flex; justify-content: flex-end;">
+                        <div class="setting-line"></div>
+                    </div>
+                </div>
+
+
+                <!-- LISTA DE ITENS -->
+                <div class="setting-list-item">
+
+                    <!-- CONFIGURAÇÕES -->
+                    <div class="list-item" style="display: block;" list-id="0">
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+                            <div class="item-column">
+                                <div class="item-label">ASSISTÊNCIA DE MIRA</div>
+                                <div class="item-icon" onclick="modalInfo('A assistência de mira ajuda a atirar nos inimigos.<br>Desligue-a para ter controle total da sua mira.')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/></svg></div>
+                            </div>
+
+                            <div class="item-column">
+                                <div class="item-skew">
+                                    <label class="ui-toggle"><input type="checkbox" checked><div class="toggle-wrapper"><div class="toggle-thumb"></div><div class="toggle-state-hidden"><div class="toggle-state">I</div><div class="toggle-state">O</div></div></div></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+                            <div class="item-column">
+                                <div class="item-label">SANGUE</div>
+                                <div class="item-icon" onclick="modalInfo('Desligue a opção de exibição de sangue para remover os efeitos de desmembramento no jogo.')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/></svg></div>
+                            </div>
+
+                            <div class="item-column">
+                                <div class="item-skew">
+                                    <label class="ui-toggle"><input type="checkbox" checked><div class="toggle-wrapper"><div class="toggle-thumb"></div><div class="toggle-state-hidden"><div class="toggle-state">I</div><div class="toggle-state">O</div></div></div></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+                            <div class="item-column">
+                                <div class="item-label">SUAVIZAÇÃO DA CÂMERA</div>
+                                <div class="item-icon" onclick="modalInfo('A suavização da câmera adiciona mais naturalidade aobservar o ambiente. Quando a opção está desativada, a câmera para imediatamente quando você tira o dedo da tela.')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/></svg></div>
+                            </div>
+
+                            <div class="item-column">
+                                <div class="item-skew">
+                                    <label class="ui-toggle"><input type="checkbox" checked><div class="toggle-wrapper"><div class="toggle-thumb"></div><div class="toggle-state-hidden"><div class="toggle-state">I</div><div class="toggle-state">O</div></div></div></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+                            <div class="item-column">
+                                <div class="item-label">CENTRALIZAÇÃO DA CÂMERA</div>
+                                <div class="item-icon" onclick="modalInfo('Desligue a opção de contralização automática da câmera para evitar que ela vá para o meio da tela após alguns segundos de inatividade.')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/></svg></div>
+                            </div>
+
+                            <div class="item-column">
+                                <div class="item-skew">
+                                    <label class="ui-toggle"><input type="checkbox" checked><div class="toggle-wrapper"><div class="toggle-thumb"></div><div class="toggle-state-hidden"><div class="toggle-state">I</div><div class="toggle-state">O</div></div></div></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+                            <div class="item-column">
+                                <div class="item-label">DICAS DO TUTORIAL</div>
+                                <div class="item-icon" onclick="modalInfo('Exibe dicas de jogo ao progredir na campanha.')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/></svg></div>
+                            </div>
+
+                            <div class="item-column">
+                                <div class="item-skew">
+                                    <label class="ui-toggle"><input type="checkbox" checked><div class="toggle-wrapper"><div class="toggle-thumb"></div><div class="toggle-state-hidden"><div class="toggle-state">I</div><div class="toggle-state">O</div></div></div></label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+                    <!-- CONTROLES -->
+                    <div class="list-item" style="display: none;" list-id="1">
+                        
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+                            <div class="item-column">
+                                <div class="item-label">INVERTER EIXO Y</div>
+                                <div class="item-icon" onclick="modalInfo('Ao inverter o EIXO Y, quando você move seu dedo para baixo, o personagem olha para cima. Essa opção não inverte o eixo horizantal.')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/></svg></div>
+                            </div>
+
+                            <div class="item-column">
+                                <div class="item-skew">
+                                    <label class="ui-toggle"><input type="checkbox"><div class="toggle-wrapper"><div class="toggle-thumb"></div><div class="toggle-state-hidden"><div class="toggle-state">I</div><div class="toggle-state">O</div></div></div></label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+
+                            <div class="item-column">
+                                <div class="item-label">SENSIBILIDADE</div>
+                                <div class="item-icon" onclick="modalInfo('Ajuste a barra de sensibilidade para aumenter ou diminuir a velocidade do movimento de observação.')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/></svg></div>
+                            </div>
+
+                            <div class="item-column" style="width: 50%;">
+                                <div class="item-skew">
+                                    
+                                    <div class="ui-seekbar">
+                                        <div class="seekbar-control" onclick="seekbarControl(this, false)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="seekbar-container" style="background: linear-gradient(to right, red, #d11b1b);">
+                                            <div class="seekbar-fill" style="width: 50%;background-color: none;">
+                                                <div class="seekbar-thumb"></div>
+                                            </div>
+                                        </div>
+                                        <div class="seekbar-control" onclick="seekbarControl(this, true)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+
+                            <div class="item-column">
+                                <div class="item-label">OPACIDADE - HUD</div>
+                                <div class="item-icon" onclick="modalInfo('Ajsute a opacidade dos elementos do HUD movendo a barra.')"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/></svg></div>
+                            </div>
+
+                            <div class="item-column" style="width: 50%;">
+                                <div class="item-skew">
+                                    
+                                    <div class="ui-seekbar">
+                                        <div class="seekbar-control" onclick="seekbarControl(this, false)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="seekbar-container">
+                                            <div class="seekbar-fill" style="width: 100%;">
+                                                <div class="seekbar-thumb"></div>
+                                            </div>
+                                        </div>
+                                        <div class="seekbar-control" onclick="seekbarControl(this, true)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    
+                    </div>
+
+
+
+                    <!-- SOM -->
+                    <div class="list-item" style="display: none;" list-id="2">
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+
+                            <div class="item-column">
+                                <div class="item-label">MÚSICA</div>
+                            </div>
+
+                            <div class="item-column" style="width: 50%;">
+                                <div class="item-skew">
+                                    
+                                    <div class="ui-seekbar">
+                                        <div class="seekbar-control" onclick="seekbarControl(this, false)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="seekbar-container">
+                                            <div class="seekbar-fill" style="width: 90%;">
+                                                <div class="seekbar-thumb"></div>
+                                            </div>
+                                        </div>
+                                        <div class="seekbar-control" onclick="seekbarControl(this, true)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+
+                            <div class="item-column">
+                                <div class="item-label">EFEITOS DE SOM</div>
+                            </div>
+
+                            <div class="item-column" style="width: 50%;">
+                                <div class="item-skew">
+                                    
+                                    <div class="ui-seekbar">
+                                        <div class="seekbar-control" onclick="seekbarControl(this, false)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="seekbar-container">
+                                            <div class="seekbar-fill" style="width: 100%;">
+                                                <div class="seekbar-thumb"></div>
+                                            </div>
+                                        </div>
+                                        <div class="seekbar-control" onclick="seekbarControl(this, true)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <!-- AJUDA -->
+                    <div class="list-item" style="display: none;" list-id="3">
+                        
+
+                        <!-- ITEM -->
+                        <div class="setting-item-wrapper item-wrapper">
+
+                            <div class="ui-carousel" id="carousel-help">
+                                
+
+
+                                <div class="carousel-index-list">
+
+                                    <div class="carousel-index carousel-active"></div>
+                                    <div class="carousel-index"></div>
+                                    <div class="carousel-index"></div>
+                                    <div class="carousel-index"></div>
+                                    <div class="carousel-index"></div>
+                                    <div class="carousel-index"></div>
+                                    <div class="carousel-index"></div>
+                                    <div class="carousel-index"></div>
+                                    <div class="carousel-index"></div>
+                                    <div class="carousel-index"></div>
+                                    <div class="carousel-index"></div>
+
+                                </div>
+
+                                <!-- BACK PAGE -->
+                                <div class="carousel-control" onclick="carousel_page('carousel-help', false)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+                                    </svg>
+                                </div>
+
+                                <div class="carousel-content">
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content" style="display: block;">
+                                        <h2>CAMPANHA</h2>
+                                        <div>No quarto jogo da franquia Modern Combat, a campanha se inicia onde ela terminou em MC3, A unidade Phantom será enviada a um novo local para eliminar a ameaça. Selecione NOVA PARTIDA para iniciar a campanha e SELECIONAR NÍVEL para jogar novamente um missão já concluída. Escolha a dificuldade escolhendo FÁCIL, NORMAL, DIFÍCIL ou EXTREMO.</div>
+                                    </div>
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content">
+                                        <h2>MULTIJOGADOR: ON-LINE</h2>
+                                        <div>Na partida multijogador on-line, você compete contra outros jogadores na comunidade de Modern Combat 4. Cada ação em batalha te dá pontos de experiência que são usados na tabela pontuação de carreira. O modo on-line também tem um sistema de crédito integrado que permite comprar novas armas e equipamento para melhorar sua experiência de jogo.</div>
+                                    </div>
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content">
+                                        <h2>MULTIJOGADOR: Wi-Fi LOCAL</h2>
+                                        <div>Partidas multijogador Wi-Fi permitem que você jogue localmente com outros jogadores na sua própria rede. Seu progresso nesse modo não é computado no seu perfil on-line. Entretanto, é possivel testar diferentes armas e customizar seu equipamento utilizando todos os itens disponíveis no jogo.</div>
+                                    </div>
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content">
+                                        <h2>OPÇÕES</h2>
+                                        <div>Acesse o OPÇÕES para selecionar o idioma, ajustar volume de música e sim, mudar esquema de controle e ajustar várias opções como assistência, nível de exibição de sangue e centralização de câmera.</div>
+                                    </div>
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content">
+                                        <h2>CONTROLES PADRÃO DE MOVIMENTO</h2>
+                                        <div>Toque e arraste o direcional esquerdo para mover o seu personagem no modo jogo, Toque e arraste o parte direita da tela para olhar em volta. Você pode modificar o esquema de controle no menu OPÇÕES accesando a tela PERSONALIZAR CONTROLES (Opções > Avançado). Neste menu, você pode arrastar os controles para o posição desejada e ainda pode mudar o tamanho dos ícones fazendo um movimento de pinça neles.</div>
+                                    </div>
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content">
+                                        <h2>ÍCONES DA TELA DE TOQUE</h2>
+                                        <div>Toque o ícone ATIRAR para usar sua arma de fogo, Toque o ícone MIRA para entrar no modo mira. Toque o ícone GRANADA para jogar um granada. Toque o ícone CORRIDA para correr. Toque o ícone AGACHAR para agachar-se. Toque-o de novo para se levantar. Mais informações sobre controles serão fornecidas através do sistema de dicas de jogo.</div>
+                                    </div>
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content">
+                                        <h2>JOGO SALVO</h2>
+                                        <div>Ao jogar o modo campanha, o progresso será salvo automaticamente sempre que você passar por um checkpoint. Se você morrer, vai reaparecer no último checkpoint ativado. Se você apagar o jogo do seu dispositivo, também vai apagar o progresso registrado nele. Ao jogar uma partida multijogador, seu perfil é gravado automaticamente depois de cada partida no servidor da Gameloft.</div>
+                                    </div>
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content">
+                                        <h2>PAUSANDO O JOGO</h2>
+                                        <div>Toque o ícone PAUSA a qualquer momento durante a campanha para interromper o jogo e acessar o menu de pausa. Lá você pode acessar as OPÇÕES, carregar o último checkpoint, reinicar a missão ou sair da missão atual e de uma partida multijogador. No modo multijogador, ao tocar PAUSA, o jogo não será interrompido.</div>
+                                    </div>
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content">
+                                        <h2>MOVIMENTOS TÁTICOS</h2>
+                                        <div>Ao correr, seu personagem vai escalar sobre objetos automaticamente, além de passar debaixo de obstáculos. Use essa opção para mover-se de forma livre e rápida pelo nível.</div>
+                                    </div>
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content">
+                                        <h2>LOJA DA CAMPANHA</h2>
+                                        <div>Durante o modo campanha, toque o ícone LOJA para melhorar seu personagem e equipamento. Use os créditos adquiridos no jogo para comprar: <br><br>IMPULSOS: melhore se personagem temporariamente.<br>MELHORIAS: melhore seu personagem permanetemente.<br>ACESSÓRIOS: personalize sua arma com acessórios de alta tecnologia.  </div>
+                                    </div>
+
+                                    <!-- PAGE -->
+                                    <div class="carousel-page-content">
+                                        <h2>LOJA MULTIJOGADOR</h2>
+                                        <div>Visite a loja no modo multijogador para acessar todos os itens disponíveis neste modo. Use os créditos do jogo adquiridos durante partidas multijogador para comprar estes itens.</div>
+                                    </div>
+
+
+                                </div>
+
+                                <!-- NEXT PAGE -->
+                                <div class="carousel-control" onclick="carousel_page('carousel-help', true)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                                    </svg>
+                                </div>
+                                
+
+                                
+
+
+                            </div>
+
+                        </div>
+
+                        
+                    </div>
+
+
+                    
+
+                </div>
+                    
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    
+
+    <script src="script.js"></script> 
+
+
+</body>
+</html>
