@@ -6,51 +6,35 @@ Math.clamp = (value, min, max) => {
 };
 
 
+let carousel_page_index = 0;
+
+
+function carousel_load(pageIndex = 0){
+    carousel_page_index = pageIndex;
+    document.getElementById("carousel-page-label").innerHTML = HELP_ITEMS[pageIndex].label;
+    document.getElementById("carousel-page-text").innerHTML = HELP_ITEMS[pageIndex].content;
+}
+
 
 function carousel_page(id_element, is_forward){
 
-    let element = document.getElementById(id_element);
+    const element = document.getElementById(id_element);
 
     if ( element == null ){
         return;
     }
+
+    carousel_page_index += is_forward ? 1 : -1;
+    carousel_page_index = Math.clamp(carousel_page_index, 0, HELP_ITEMS.length - 1);
+    carousel_load(carousel_page_index);
     
-    let list_of_index = element.querySelectorAll('.carousel-index-list > div');
-    let list_pages = element.querySelectorAll('.carousel-content > div');
-    let last_index = 0;
+    const list_of_index = element.querySelectorAll('.carousel-index-list > div');
 
     for (let i = 0; i < list_of_index.length; i++){
-
-        if ( list_of_index[i].classList.contains('carousel-active') ){
-            last_index = i;
-        }
-        list_of_index[i].classList.remove('carousel-active');
-        list_pages[i].style.display = 'none';
+        list_of_index[i].classList.toggle('carousel-active', carousel_page_index == i);
     }
-
-
-    
-    if ( is_forward ){
-
-        if ( last_index < list_of_index.length-1 ){
-            last_index++;
-        }
-    }
-    else{
-
-        if ( last_index > 0 ){
-            last_index--;
-        }
-
-    }
-
-
-    list_of_index[last_index].classList.add('carousel-active');
-    list_pages[last_index].style.display = 'block';
 
 }
-
-
 
 
 
@@ -117,3 +101,7 @@ function modalInfo(value){
     toggleModal(element.id, true);
 }
 
+
+onload = () => {
+    carousel_load(0);
+};
